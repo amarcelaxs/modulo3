@@ -1,26 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Provider} from 'react-redux';
+import './config/ReactotronConfig.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import store from './store';
+
+import TodoList from './TodoList';
+
+console.tron.log('testando');
+//o provider vai passar a informação sobre o estado do redux
+const App = () =>(
+  <Provider store={store}>
+    <TodoList />    
+  </Provider>
+);
 
 export default App;
