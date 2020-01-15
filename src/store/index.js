@@ -8,8 +8,8 @@ const composer = process.env.NODE_ENV === 'development'
 )
 //const store = createStore(reducers, ); // sera passado os reduces que são os carinhas que vão armazenar e mudar o estado do redux 
 : applyMiddleware(...[]);
-
 const store = createStore(reducers, composer);
+
 
 export default store;
 
