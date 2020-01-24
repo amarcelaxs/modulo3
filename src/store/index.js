@@ -7,7 +7,7 @@ import reducers from './reducers';
 import sagas from './sagas';
 
 
-const middlewares = [] ;
+//const middlewares = [] ;
 //variavelcriada 
 const sagaMiddleware = createSagaMiddleware();
 //middlewares.push(sagaMiddleware);
@@ -16,11 +16,11 @@ const middlewares = [sagaMiddleware];
 
 const composer = process.env.NODE_ENV === 'development'
 ? compose(
-  applyMiddleware(...[]),
+  applyMiddleware(...middlewares),
   console.tron.createEnhancer(),
 )
 //const store = createStore(reducers, ); // sera passado os reduces que são os carinhas que vão armazenar e mudar o estado do redux 
-: applyMiddleware(...[middlewares]);
+: applyMiddleware(...middlewares);
 const store = createStore(reducers, composer);
 
 
