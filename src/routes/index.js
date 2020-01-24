@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+//importando po component footer
+import Footer from '../components/Footer';
 
 
 import Main from '../pages/main';
 const Routes = () => (
   <BrowserRouter>
-    <Switch>      
-      
-      <Route exact  path="/" component={Main} />
-      
+    <Fragment>
+      <Switch>      
+        
+        <Route exact  path="/" component={Main} />
+        
 
-    </Switch>
+      </Switch>
+      <Footer />
+    </Fragment>
   </BrowserRouter>
   //
   //exact pega exatamenta a rota especifica <Route exact path="/teste" component={Main} />
@@ -18,4 +24,4 @@ const Routes = () => (
 
 );
 
-export default Routes
+export default Routes;
