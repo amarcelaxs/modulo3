@@ -1,12 +1,21 @@
 //state iniciando do array vazio
-const INITIAL_STATE = [];
+//const INITIAL_STATE = [];
+const INITIAL_STATE = {
+  loading:false,
+  data:[],
+
+}
+
 
 //É CRIADO UM ESTADO QUE RECEBE A ACTION
 export default function favorites(state = INITIAL_STATE, action ){
   switch(action.type){
+    case 'ADD_FAVORITE_REQUEST': 
+      return {...state, loading:true}
     case 'ADD_FAVORITE_SUCCESS':
-      return [
-        ...state, action.payload.data];
+      return {...state, loading:false, data:[...state.data,action.payload.data]}
+      //return [
+        //...state, action.payload.data];
        // {
           //AS INFORMAÇÕES ESTÃO COMO ESTATICO
           //CADA VES QUE FOR CHAMADA A ACTION ADD_FAVORITE É PRA ELE ADICIONAR NOVAMENTE O REPOSITORIO DO FACEBOOK ABAIXO

@@ -17,14 +17,22 @@ class Main extends Component {
 //fazendo a validação de proptypes nas propriedades
 static propTypes =  {
   addFavoriteRequest: PropTypes.func.isRequired,
-  favorites: PropTypes.arrayOf(PropTypes.shape({
+  favorites:PropTypes.shape({
+    loading:PropTypes.bool,
+    data:PropTypes.arrayOf(PropTypes.shape({
     id:PropTypes.number,
     name:PropTypes.string,
     description:PropTypes.string,
     url:PropTypes.string
+  })),
+  //favorites: PropTypes.arrayOf(PropTypes.shape({
+   // id:PropTypes.number,
+   //name:PropTypes.string,
+   // description:PropTypes.string,
+    //url:PropTypes.string
 
-  })).isRequired,
-}
+  }).isRequired,
+};
 
   //nesse caso usa -se para compos mas simples
   state = {
@@ -54,8 +62,10 @@ static propTypes =  {
             onChange={e => this.setState({ repositoryInput:e.target.value})}
             />
             <button type="submit">Adicionar</button>
+
+            {this.props.favorites.loading && <span>Carregando...</span>}
             <ul>              
-              {this.props.favorites.map(favorite => (
+              {this.props.favorites.data.map(favorite => (
                 <li key={favorite.id}>
                   <p>
                     <strong>{favorite.name}</strong>

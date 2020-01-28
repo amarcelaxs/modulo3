@@ -18,7 +18,7 @@ Footer.propTypes = {
 
 const mapStateToProps = state =>({
   //é possivel fazer operações dentro do do map state do props
-  count: state.favorites.length,
+  count: state.favorites.data.length,
   // isso atualiza ao mesmo tempo o repositorio adicional e a quantidade
 });
 
