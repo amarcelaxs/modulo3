@@ -23,8 +23,9 @@ static propTypes =  {
     id:PropTypes.number,
     name:PropTypes.string,
     description:PropTypes.string,
-    url:PropTypes.string
+    url:PropTypes.string,
   })),
+  error: PropTypes.oneOfType([null, PropTypes.string]),
   //favorites: PropTypes.arrayOf(PropTypes.shape({
    // id:PropTypes.number,
    //name:PropTypes.string,
@@ -48,6 +49,10 @@ static propTypes =  {
     event.preventDefault();
      // this.props.addFavorite();
      this.props.addFavoriteRequest(this.state.repositoryInput);
+
+     this.setState({ repositoryInput: ''});
+
+
   };
 
   render(){
@@ -64,7 +69,11 @@ static propTypes =  {
             <button type="submit">Adicionar</button>
 
             {this.props.favorites.loading && <span>Carregando...</span>}
-            <ul>              
+
+          { !! this.props.favorites.error && 
+          (<span style={{color:'#f00'}}>{this.props.favorites.error}</span>)}
+
+          <ul>              
               {this.props.favorites.data.map(favorite => (
                 <li key={favorite.id}>
                   <p>
@@ -76,6 +85,8 @@ static propTypes =  {
               ))}              
             </ul>
         </form>
+            
+        
       </Fragment>
     ); 
   }

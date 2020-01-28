@@ -12,4 +12,12 @@ export const addFavoriteSuccess = data => ({
 
 
 
+export const addFavoriteFailure = error => ({
+  //exportando uma action addFavoritefalha
+  type: "ADD_FAVORITE_FAILURE",
+  payload: {error},
+});
+
+
+
 //COMO A ACTION NÃO ESTA SENDO USADA NO FAVORITES EM REDUCERS ENTÃO NÃO É PRECISO  ENVIAR INFORMAÇÕES PELO PAYLOAD DA ACTION
